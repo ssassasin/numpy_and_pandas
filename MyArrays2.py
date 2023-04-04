@@ -9,7 +9,7 @@ grades.sum()
 
 grades.min()
 
-grade.max()
+grades.max()
 
 grades.mean()
 
@@ -42,20 +42,20 @@ grades.mean(axis=1)
 
 numbers = np.array([1,4,9,16,25,36])
 
-np.sqrt(numbers)
+sqrt = np.sqrt(numbers)
 
 
 # Let’s add two arrays with the same shape, using the add universal function:
 
 numbers2 = np.arange(1, 7) * 10
 
-np.add(numbers, numbers2)
+result = np.add(numbers, numbers2)
 
 
 
 # Let’s use the multiply universal function to multiply every element of numbers2 by the scalar value 5:
 
-np.multiply(numbers2, 5)
+result = np.multiply(numbers2, 5)
 
 
 # Let’s reshape numbers2 into a 2-by-3 array, then multiply its values by a one-dimensional array of three elements:
@@ -64,7 +64,7 @@ numbers3 = numbers2.reshape(2, 3)
 
 numbers4 = np.array([2, 4, 6])
 
-np.multiply(numbers3, numbers4)
+result = np.multiply(numbers3, numbers4)
 
 ''' This works because numbers4 has the same length as each row of numbers3, so NumPy can apply the multiply operation by
  treating numbers4 as if it were the following array:
@@ -82,23 +82,23 @@ grades = np.array([[87, 96, 70], [100, 87, 90],
                    [94, 77, 90], [100, 81, 82]])
 
 
-grades[0, 1] # row 0, column 1
+result = grades[0, 1] # row 0, column 1
 #96
 
 
 # To select a single row, specify only one index in square brackets:
-grades[1]
+result = grades[1]
 #array([100,  87,  90])
 
 
 # To select multiple sequential rows, use slice notation (remember upper limit is not included):
-grades[0:2]
+result = grades[0:2]
 #array([[ 87,  96,  70],
 #       [100,  87,  90]])
 
 
 # To select multiple non-sequential rows, use a list of row indices:
-grades[[1, 3]]
+result = grades[[1, 3]]
 #array([[100,  87,  90],
 #       [100,  81,  82]])
 
@@ -106,7 +106,7 @@ grades[[1, 3]]
 # You can select subsets of the columns by providing a tuple specifying the row(s) and column(s) to select.
 # Each can be a specific index, a slice or a list. Let’s select only the elements in the first column:
 
-grades[:, 0]
+result = grades[:, 0]
 
 # The 0 after the comma indicates that we’re selecting only column 0.
 
@@ -115,7 +115,7 @@ grades[:, 0]
 
 # You can select consecutive columns using a slice:
 
-grades[:, 1:3]
+result =  grades[:, 1:3]
 '''array([[96, 70],
        [87, 90],
        [77, 90],
@@ -124,7 +124,7 @@ grades[:, 1:3]
 
 # or specific columns using a list of column indices:
 
-grades[:, [0, 2]]
+result =  grades[:, [0, 2]]
 
 '''array([[ 87,  70],
        [100,  90],
@@ -133,32 +133,15 @@ grades[:, [0, 2]]
 
 
 
-'''
+''' EXERCISE
 Use NumPy random-number generation to create an array of twelve random grades
 in the range 60 through 100, then reshape the result into a 3-by-4 array.
 Calculate the average of all the grades, the averages of the grades for each test
 and the averages of the grades for each student.
-
-import numpy as np
-
-grades = np.random.randint(60, 101, 12).reshape(3, 4)
-
-print(grades)
-
-array([[94, 72, 76, 91],
-       [65, 78, 66, 70],
-       [65, 60, 63, 72]])
-
-grades.mean()
-Out[4]: 72.66666666666667
-
-grades.mean(axis=0)
-Out[5]: array([74.66666667, 70.        , 68.33333333, 77.66666667])
-
-grades.mean(axis=1)
-Out[6]: array([83.25, 69.75, 65. ])
-
 '''
+
+
+
 
 
 #Shallow copies (view)
@@ -282,7 +265,7 @@ raveled[0] = 100
 
 print(grades)
 
-raveled[6] = 99
+#raveled[6] = 99
 #this will give an error. Why?
 
 raveled[5] = 99
@@ -295,8 +278,8 @@ print(grades)
 
 #You can quickly transpose an array’s rows and columns—that is “flip” the array, so the rows become the columns and
 #the columns become the rows. The T attribute returns a transposed view (shallow copy) of the array. 
-
-grades.T
+grades = np.array([[87, 96, 70], [100, 87, 90]])
+result = grades.T
 
 
 #Transposing does not modify the original array:
@@ -324,7 +307,7 @@ print(grades)
 #let’s assume that grades2 represents two more students’ grades on three exams.
 v_grades = np.vstack((grades, grades2))
 
-
+print(v_grades)
 
 
 
